@@ -1,0 +1,22 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"search.useIgnoreFilesByDefault": true,
+	"tslint.jsEnable": true,
+	"tslint.alwaysShowRuleFailuresAsWarnings": false,
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"auto-close-tag.activationOnLanguage": [
+		"html",
+		"javascriptreact",
+		"typescriptreact"
+	],
+	"[sql]": {
+		"editor.formatOnSave": false
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.tslint": true
+	}
+}
