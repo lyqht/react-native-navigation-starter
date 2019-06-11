@@ -1,61 +1,45 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
+import { pushViewPostScreen, showAddPostModal } from "../../screens"
+import { View, StyleSheet } from 'react-native';
 import { Navigation } from "react-native-navigation"
+import { Text, Button, Slider } from "react-native-mol-design-system"
 
-// interface propTypes {
-// 	componentId: string
-// }
 interface Props { componentId: string };
-interface State { value: string }
-interface Options {
-	topBar: {
-		rightButtons: [
-			{
-				id: 'addPost',
-				text: 'Add'
-			}
-		]
-	}
+interface State { }
+interface NavProps {
+	buttonId: string
 }
 
-class PostsList extends Component<Props, State, Options> {
+class PostsList extends Component<Props, State> {
+	static options = () => {
+		return {
+			topBar: {
+				rightButtons: [
+					{
+						id: 'addPost',
+						text: 'Add'
+					}
+				]
+			}
+		}
+	}
+
 	constructor(props: Props) {
 		super(props)
-		Navigation.events().bindComponent(this)
+		Navigation.events().bindComponent(this);
 	}
-
-
-	navigationButtonPressed = (buttonId: string) => {
-		alert(buttonId);
+	// left buttons on Android only support icons
+	navigationButtonPressed = ({ buttonId }: NavProps) => {
+		if (buttonId === 'addPost') showAddPostModal()
 	}
-
-	pushViewPostScreen = () => {
-		Navigation.push(this.props.componentId, {
-			component: {
-				name: 'demo.ViewPost',
-				passProps: {
-					somePropToPass: 'Some props that we are passing'
-				},
-				options: {
-					topBar: {
-						title: {
-							text: 'Post1'
-						}
-					}
-				}
-			}
-		});
-	}
-
-
-
 
 	render() {
 		return (
 			<View style={styles.container} >
-				<Text onPress={this.pushViewPostScreen} style={styles.text}>PostsList Screen</Text>
+				<Text.H2>Posts Screen </Text.H2>
+				<Button onPress={() => pushViewPostScreen(this.props.componentId)} title="Hello" />
+				<Slider measurementType="number" />
 			</View>
 		);
 	}

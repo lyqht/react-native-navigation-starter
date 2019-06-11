@@ -10,7 +10,8 @@
 	"dependencies": {
 		"@types/jest": "^24.0.13",
 		"react": "^16.8.6",
-		"react-native": "0.59.9"
+		"react-native": "0.59.9",
+		"react-native-mol-design-system": "git+ssh://git@bitbucket-ssh.gdshive.com:7999/push/react-native-mol-design-system.git#built"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
@@ -45,5 +46,10 @@
 			"js"
 		],
 		"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+	},
+	"rnpm": {
+		"assets": [
+			"./src/assets"
+		]
 	}
 }
