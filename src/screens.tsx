@@ -1,8 +1,10 @@
 import { Navigation } from 'react-native-navigation';
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 export function registerScreens() {
 
-	Navigation.registerComponent('demo.PostsList', () => require('./posts/screens/PostsList').default);
+	Navigation.registerComponentWithRedux('demo.PostsList', () => require('./posts/screens/PostsList').default, Provider, store);
 	Navigation.registerComponent('demo.AddPost', () => require('./posts/screens/AddPost').default);
 	Navigation.registerComponent('demo.ViewPost', () => require('./posts/screens/ViewPost').default);
 }

@@ -11,7 +11,9 @@
 		"@types/jest": "^24.0.13",
 		"react": "^16.8.6",
 		"react-native": "0.59.9",
-		"react-native-mol-design-system": "git+ssh://git@bitbucket-ssh.gdshive.com:7999/push/react-native-mol-design-system.git#built"
+		"react-native-mol-design-system": "git+ssh://git@bitbucket-ssh.gdshive.com:7999/push/react-native-mol-design-system.git#built",
+		"react-redux": "^7.1.0",
+		"redux": "^4.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
@@ -19,6 +21,7 @@
 		"@babel/runtime": "^7.4.5",
 		"@types/react": "^16.8.19",
 		"@types/react-native": "^0.57.60",
+		"@types/react-redux": "^7.0.9",
 		"babel-jest": "^24.8.0",
 		"jest": "^24.8.0",
 		"metro-react-native-babel-preset": "^0.54.1",

@@ -1,17 +1,25 @@
 
-import React, { Component } from 'react';
-import { pushViewPostScreen, showAddPostModal } from "../../screens"
-import { View, StyleSheet } from 'react-native';
-import { Navigation } from "react-native-navigation"
-import { Text, Button, Slider } from "react-native-mol-design-system"
+import React, { PureComponent } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Button, Text } from "react-native-mol-design-system";
+import { Navigation } from "react-native-navigation";
+import { connect } from 'react-redux';
+import { pushViewPostScreen, showAddPostModal } from "../../screens";
+import { fetchPost } from '../posts.actions';
 
-interface Props { componentId: string };
-interface State { }
+interface Props {
+	componentId: string,
+	fetchPost(): any,
+	posts?: any[],
+}
+interface State {
+	posts: any[]
+}
 interface NavProps {
 	buttonId: string
 }
 
-class PostsList extends Component<Props, State> {
+class PostsList extends PureComponent<Props, State> {
 	static options = () => {
 		return {
 			topBar: {
@@ -23,6 +31,9 @@ class PostsList extends Component<Props, State> {
 				]
 			}
 		}
+	}
+	componentDidMount() {
+		this.props.fetchPost()
 	}
 
 	constructor(props: Props) {
@@ -39,13 +50,21 @@ class PostsList extends Component<Props, State> {
 			<View style={styles.container} >
 				<Text.H2>Posts Screen </Text.H2>
 				<Button onPress={() => pushViewPostScreen(this.props.componentId)} title="Hello" />
-				<Slider measurementType="number" />
+				<Text.H3>{JSON.stringify(this.props.posts)}</Text.H3>
 			</View>
 		);
 	}
 }
 
-export default PostsList;
+const mapStateToProps = (state: State) => {
+	return {
+		posts: state.posts
+	};
+}
+
+export default connect(mapStateToProps, { fetchPost })(PostsList);
+
+// export default PostsList;
 
 const styles = StyleSheet.create({
 	container: {
@@ -60,3 +79,4 @@ const styles = StyleSheet.create({
 		margin: 10,
 	}
 });
+
