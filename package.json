@@ -1,58 +1,70 @@
 {
-	"name": "MOLKeep",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest",
-		"android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
-	},
-	"dependencies": {
-		"@types/jest": "^24.0.13",
-		"react": "^16.8.6",
-		"react-native": "0.59.9",
-		"react-native-mol-design-system": "git+ssh://git@bitbucket-ssh.gdshive.com:7999/push/react-native-mol-design-system.git#built",
-		"react-redux": "^7.1.0",
-		"redux": "^4.0.1"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.4.5",
-		"@babel/preset-typescript": "^7.3.3",
-		"@babel/runtime": "^7.4.5",
-		"@types/react": "^16.8.19",
-		"@types/react-native": "^0.57.60",
-		"@types/react-redux": "^7.0.9",
-		"babel-jest": "^24.8.0",
-		"jest": "^24.8.0",
-		"metro-react-native-babel-preset": "^0.54.1",
-		"react-native-navigation": "^2.21.0",
-		"react-test-renderer": "16.8.3",
-		"tslint-config-prettier": "^1.18.0",
-		"tslint-eslint-rules": "^5.4.0",
-		"tslint-react": "^4.0.0",
-		"typescript": "^3.5.1"
-	},
-	"jest": {
-		"preset": "react-native",
-		"transform": {
-			"^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
-			"\\.(ts|tsx)$": "ts-jest"
-		},
-		"globals": {
-			"ts-jest": {
-				"tsConfig": "tsconfig.jest.json"
-			}
-		},
-		"moduleFileExtensions": [
-			"ts",
-			"tsx",
-			"js"
-		],
-		"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
-	},
-	"rnpm": {
-		"assets": [
-			"./src/assets"
-		]
-	}
+  "name": "MOLKeep",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.13",
+    "react": "^16.8.6",
+    "react-native": "0.59.9",
+    "react-native-mol-design-system": "git+ssh://git@bitbucket-ssh.gdshive.com:7999/push/react-native-mol-design-system.git#built",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/runtime": "^7.4.5",
+    "@types/react": "^16.8.19",
+    "@types/react-native": "^0.57.60",
+    "@types/react-redux": "^7.0.9",
+    "babel-jest": "^24.8.0",
+    "detox": "^12.11.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-native-navigation": "^2.21.0",
+    "react-test-renderer": "16.8.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.jest.json"
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets"
+    ]
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/MOLKeep.app",
+        "build": "xcodebuild -project ios/MOLKeep.xcodeproj -scheme MOLKeep -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      }
+    },
+    "test-runner": "jest"
+  }
 }
