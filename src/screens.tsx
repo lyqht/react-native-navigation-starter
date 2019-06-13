@@ -3,10 +3,11 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 
 export function registerScreens() {
+	Navigation.registerComponent('markdownMainView', () => require('./screens/mdMainView').default)
+	Navigation.registerComponentWithRedux('demo.PostsList', () => require('./template-screens/PostsList').default, Provider, store);
+	Navigation.registerComponent('demo.AddPost', () => require('./template-screens/AddPost').default);
+	Navigation.registerComponent('demo.ViewPost', () => require('./template-screens/ViewPost').default);
 
-	Navigation.registerComponentWithRedux('demo.PostsList', () => require('./posts/screens/PostsList').default, Provider, store);
-	Navigation.registerComponent('demo.AddPost', () => require('./posts/screens/AddPost').default);
-	Navigation.registerComponent('demo.ViewPost', () => require('./posts/screens/ViewPost').default);
 }
 
 export function popScreen(componentId: string) {

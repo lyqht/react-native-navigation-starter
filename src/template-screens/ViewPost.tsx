@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { popScreen } from '../../screens'
+import { popScreen } from '../screens'
 
 interface Props { componentId: string };
 interface State { }

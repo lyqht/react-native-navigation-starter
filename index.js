@@ -14,7 +14,7 @@ Navigation.events().registerAppLaunchedListener(() => {
 				children: [
 					{
 						component: {
-							name: 'demo.PostsList',
+							name: 'markdownMainView', // configure the screen to be shown as root here. refer to the names in screens.tsx
 							options: {
 								topBar: {
 									title: {

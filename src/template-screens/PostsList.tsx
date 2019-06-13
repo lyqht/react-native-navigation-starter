@@ -4,8 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Text } from "react-native-mol-design-system";
 import { Navigation } from "react-native-navigation";
 import { connect } from 'react-redux';
-import { pushViewPostScreen, showAddPostModal } from "../../screens";
-import { fetchPost } from '../posts.actions';
+import { pushViewPostScreen, showAddPostModal } from "../screens";
+import { fetchPost } from './posts.actions';
 
 interface Props {
 	componentId: string,
@@ -48,7 +48,7 @@ class PostsList extends PureComponent<Props, State> {
 	render() {
 		return (
 			<View style={styles.container} >
-				<Text.H2>Posts Screen </Text.H2>
+				<Text.H2>Posts Screen</Text.H2>
 				<Button onPress={() => pushViewPostScreen(this.props.componentId)} title="Hello" />
 				<Text.H3>{JSON.stringify(this.props.posts)}</Text.H3>
 			</View>
